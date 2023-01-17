@@ -15,3 +15,22 @@ const testData = [
         isCompleted: true,
     }
 ]
+
+
+function buildTask(task) {
+    const taskContainer = document.createElement('div');
+    taskContainer.className = 'tasks__task';
+    taskContainer.innerHTML = `<input type="checkbox" ${task.isCompleted ? 'checked' : ''} />${task.description}`
+    return taskContainer;
+}
+
+function renderList(){
+    const tasksNode = document.querySelector('#task-list');
+    testData.forEach(function (task) {
+        const taskHtml = buildTask(task);
+        tasksNode.append(taskHtml);
+    });
+}
+
+
+renderList();
