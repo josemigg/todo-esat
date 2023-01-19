@@ -1,7 +1,7 @@
 
 .content {
     padding: 20px;
-    max-width: 800px;
+    max-width: 608px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -23,4 +23,35 @@
     border-radius: 4px;
     color: #fff;
     padding: 0 20px;
+}
+
+.filters {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.filter__option {
+    border: none;
+    background-color: transparent;
+    padding: 12px 20px;
+    position: relative;
+}
+
+.filter__option:hover {
+    background-color: #eee;
+}
+
+.filter__option--active::after {
+    height: 2px;
+    content: "";
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    background:#2f80ed;
+    display: block;
+    width: 100%;
+    position:absolute;
+    left: 0;
+    bottom: 0;
 }

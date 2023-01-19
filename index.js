@@ -37,16 +37,16 @@ function renderList(){
 const formNode = document.querySelector('#add-task');
 formNode.addEventListener('submit', function (event){
     event.preventDefault();
-    console.log(event);
     const description = document.forms['add-task']['description'].value;
     const newTask = {
-        id: new Date().getMilliseconds(),
+        id: new Date().getTime(),
         isCompleted: false,
         description,
     }
     const taskHtml = buildTask(newTask);
     const tasksNode = document.querySelector('#task-list');
     tasksNode.append(taskHtml);
+    formNode.reset();
 });
 
 renderList();

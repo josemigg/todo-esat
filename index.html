@@ -4,10 +4,21 @@
     <link rel="stylesheet" href="./styles.css" />
     <script src="index.js" defer></script>
 
-</head>asdfasdf
+</head>
 
 <body>
     <div class="content">
+        <div class="filters">
+            <button class="filter__option">
+                All
+            </button>
+            <button class="filter__option">
+                Active
+            </button>
+            <button class="filter__option filter__option--active">
+                Completed
+            </button>
+        </div>
         <form class="add" id="add-task">
             <input type="text" placeholder="add description" class="add__input" name="description"/>
             <button type="submit" class="add__button">
