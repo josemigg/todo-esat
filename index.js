@@ -72,10 +72,18 @@ renderList();
 
 // Filters 
 const filterButtons = document.querySelectorAll('.filter__option');
+const filterActiveClass = 'filter__option--selected';
 filterButtons.forEach(function(filterButton){
-    filterButton.addEventListener('click', function(){
+    filterButton.addEventListener('click', function() {
+        if(this.classList.contains(filterActiveClass)){
+            return;
+        }
+
         const filterToApply = this.getAttribute('data-filter');
         renderList(filterToApply);
+        // remove class 
+        document.querySelector(`.${filterActiveClass}`).classList.remove(filterActiveClass)
+        this.classList.add(filterActiveClass);
     });
 })
 
