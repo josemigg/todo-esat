@@ -24,9 +24,26 @@ function buildTask(task) {
     return taskContainer;
 }
 
-function renderList(){
+function renderList(filterToApply){ // filterToApply puede ser active, completed, all
     const tasksNode = document.querySelector('#task-list');
-    testData.forEach(function (task) {
+    tasksNode.innerHTML = '';
+
+    let tasksToShow = testData;
+
+    if(filterToApply === 'active') {
+        tasksToShow = testData.filter(function(task) {
+           return !task.isCompleted;
+        });
+    }
+
+    if(filterToApply === 'completed') {
+        tasksToShow = testData.filter(function(task) {
+            return task.isCompleted;
+        });
+    }
+
+
+    tasksToShow.forEach(function (task) {
         const taskHtml = buildTask(task);
         tasksNode.append(taskHtml);
     });
@@ -50,3 +67,16 @@ formNode.addEventListener('submit', function (event){
 });
 
 renderList();
+
+
+
+// Filters 
+const filterButtons = document.querySelectorAll('.filter__option');
+filterButtons.forEach(function(filterButton){
+    filterButton.addEventListener('click', function(){
+        const filterToApply = this.getAttribute('data-filter');
+        renderList(filterToApply);
+    });
+})
+
+

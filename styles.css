@@ -43,7 +43,7 @@
     background-color: #eee;
 }
 
-.filter__option--active::after {
+.filter__option--selected::after {
     height: 2px;
     content: "";
     border-top-left-radius: 4px;
