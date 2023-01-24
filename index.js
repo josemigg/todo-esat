@@ -21,6 +21,17 @@ function buildTask(task) {
     const taskContainer = document.createElement('div');
     taskContainer.className = 'tasks__task';
     taskContainer.innerHTML = `<input type="checkbox" ${task.isCompleted ? 'checked' : ''} />${task.description}`
+
+    const checkboxNode = taskContainer.querySelector('[type="checkbox"]');
+    checkboxNode.addEventListener('click', function(){
+        const index = testData.findIndex(function(taskInArray){
+            return taskInArray.id === task.id;
+        });
+        
+        const taskToChange =  testData[index];
+        taskToChange.isCompleted = !taskToChange.isCompleted;
+    });
+
     return taskContainer;
 }
 
@@ -67,7 +78,6 @@ formNode.addEventListener('submit', function (event){
     formNode.reset();
 });
 
-renderList();
 
 
 
@@ -96,4 +106,4 @@ filterButtons.forEach(function(filterButton){
     });
 })
 
-
+renderList();
