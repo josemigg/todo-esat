@@ -8,6 +8,7 @@
 
 .add {
     display: flex;
+    gap: 20px;
 }
 
 .add__input {
@@ -54,4 +55,8 @@
     position:absolute;
     left: 0;
     bottom: 0;
+}
+
+.hidden {
+    display: none;
 }
