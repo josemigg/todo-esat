@@ -17,10 +17,19 @@ const testData = [
 ]
 
 
-function buildTask(task) {
+function buildTask(task, includeDeleteButton) {
     const taskContainer = document.createElement('div');
     taskContainer.className = 'tasks__task';
     taskContainer.innerHTML = `<input type="checkbox" ${task.isCompleted ? 'checked' : ''} />${task.description}`
+    console.log(includeDeleteButton)
+    if(includeDeleteButton){
+        taskContainer.innerHTML+= '<button type="button" class="delete">Borrar</button>';
+
+        const deleteNode = taskContainer.querySelector('[type="button"]');
+        deleteNode.addEventListener('click',function(){
+            taskContainer.remove();
+        });
+    }
 
     const checkboxNode = taskContainer.querySelector('[type="checkbox"]');
     checkboxNode.addEventListener('click', function(){
@@ -31,7 +40,6 @@ function buildTask(task) {
         const taskToChange =  testData[index];
         taskToChange.isCompleted = !taskToChange.isCompleted;
     });
-
     return taskContainer;
 }
 
@@ -53,11 +61,11 @@ function renderList(filterToApply){ // filterToApply puede ser active, completed
         });
     }
 
-
     tasksToShow.forEach(function (task) {
-        const taskHtml = buildTask(task);
+        const taskHtml = buildTask(task, filterToApply === 'completed');
         tasksNode.append(taskHtml);
     });
+
 }
 
 
@@ -102,6 +110,7 @@ filterButtons.forEach(function(filterButton){
         } else {
             document.querySelector('#add-task').classList.remove('hidden');
         }
+
 
     });
 })
